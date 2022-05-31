@@ -8,12 +8,17 @@ typedef struct {
   int days;
 } Habit;
 
+void display_habit(int row, int col, Habit *habit);
 void print_bar(int row, int col, int days);
 
 int main(int argc, char *argv[])
 {
   char header[] = "Habit Chain";
   int row, col;
+  Habit my_habit = {
+    .name = "Drinking Coffee",
+    .days = 11
+  };
 
   initscr();
   cbreak();
@@ -24,7 +29,9 @@ int main(int argc, char *argv[])
   
   mvprintw(5, (col - strlen(header)) / 2, "%s", header);
   refresh();
-  print_bar(6, 0, 15);
+
+  display_habit(7, 0, &my_habit);
+
   getch();
   endwin();
 
@@ -40,3 +47,8 @@ void print_bar(int row, int col, int days)
   }
 }
 
+void display_habit(int row, int col, Habit *habit)
+{
+  mvprintw(row, col, "Habit: %s", habit->name);
+  print_bar(row + 1, col, habit->days);
+}
