@@ -3,6 +3,11 @@
 #include <ncurses.h>
 #include <string.h>
 
+typedef struct {
+  char name[30];
+  int days;
+} Habit;
+
 void print_bar(int row, int col, int days);
 
 int main(int argc, char *argv[])
@@ -34,3 +39,4 @@ void print_bar(int row, int col, int days)
     refresh();
   }
 }
+
