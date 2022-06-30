@@ -3,6 +3,8 @@
 #include <ncurses.h>
 #include <string.h>
 
+#include "list.h"
+
 typedef struct {
   char *name;
   int days;
